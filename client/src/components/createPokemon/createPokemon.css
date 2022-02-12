@@ -1,0 +1,19 @@
+.content-form{
+    display: grid;
+    justify-content: center;
+    grid-template-columns:300px ;
+    
+    grid-gap: 16px;
+    margin-right: 50px;
+}
+
+.content-page-form{
+    background-color: #ff989b;
+    height: 300px;
+    margin-left:400px;
+    margin-right:400px;
+    border-radius: 20px;
+}
+.button-create{
+    margin: 10px 100px;
+}

@@ -1,0 +1,12 @@
+.container{
+    display: grid; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+.clase-imagen{
+    width: 150px;
+    height: 140px;
+    border-radius: 20px; 
+    margin-bottom: 5px;
+}

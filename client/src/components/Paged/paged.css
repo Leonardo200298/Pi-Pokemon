@@ -1,0 +1,14 @@
+.content::placeholder{
+    display: flexbox;
+    justify-content: space-evenly;
+    height: 40px;
+   
+
+}
+.style-button{
+    background-color: rgb(255, 146, 146);
+    margin-left: 600px;
+    margin-right: 600px;
+    border-radius: 30px;
+}
+

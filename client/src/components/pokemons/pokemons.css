@@ -1,0 +1,12 @@
+.main-containers{
+    display: grid;
+  /*   grid-template-columns:2fr  1fr; */
+  grid-template-columns: 2fr 1fr ;
+    grid-template-rows: 2fr;
+    margin-bottom: 30px;
+    grid-gap: 70px;
+   
+}
+.container-home{
+    background-image: url('../../images/fondo-1.png');
+}
