@@ -23,9 +23,9 @@ async function dbTypes(){
 }
 
 const createPokemon = async (req, res) => {
-     const { name, id, img, life, force, defending, speed, height, weight, types } = req.body;
+     const { name, id, img, life, attack, defending, speed, height, weight, types } = req.body;
         
-    const poke = await helperCreatePokemon(name,id,img, life, force, defending,speed,height,weight,types);
+    const poke = await helperCreatePokemon(name,id,img, life, attack, defending,speed,height,weight,types);
     poke === 'error'
         ? res.status(400).send({error:'404 Not found'})
         : res.status(200).send({success:'Pokemon created'});
@@ -38,7 +38,7 @@ const helperCreatePokemon = async (name,id,img,life,force,defending,speed,height
                 id,
                 life,
                 img,
-                force,
+                attack,
                 defending,
                 speed,
                 height,

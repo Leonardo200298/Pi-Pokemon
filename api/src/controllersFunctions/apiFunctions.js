@@ -16,31 +16,28 @@ async function getPokeApi(){
                 name: info.name,
                 id: info.id,
                 img: info.sprites.other.dream_world.front_default,
-                force:info.stats[1].base_stat,
+                attack:info.stats[1].base_stat,
                 defending: info.stats[2].base_stat,
                 speed:info.stats[5].base_stat,
                 height: info.height,
-                weight:info.weight
+                weight:info.weight,
+                types: info.types.map((t) => t.type.name),
                 
             });
            
         });
-        /* console.log(pokemons) */
-       // return pokemons;
     })
     return pokemons;
 }
 async function getAllPokemons(req, res) {
     try{
-        /* const api = await getPokeApi()
-        const db = await getAllPokemosDb() */
-        const [db] = await Promise.all([getAllPokemosDb()])
+    
+        const [db, api] = await Promise.all([getAllPokemosDb(),getPokeApi()])
         /* console.log(api) */
         /* console.log(db) */
-        const allPoke = [...db];
+        const allPoke = [...db, ...api];
         if (req.query.name) {
             var prueba = await findByName(allPoke, req.query.name)
-            console.log('entre gil')
             return res.send(prueba);
         }
        res.send(allPoke);
@@ -80,7 +77,7 @@ async function getPokemonById(req, res) {
         name: data.name,
         id: data.id,
         img: data.sprites.other.dream_world.front_default,
-        force:data.stats[1].base_stat,
+        attack:data.stats[1].base_stat,
         defending: data.stats[2].base_stat,
         speed:data.stats[5].base_stat,
         height:data.height,

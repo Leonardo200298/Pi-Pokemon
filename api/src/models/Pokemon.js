@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
     life:{
       type:DataTypes.STRING,
     },
-    force:{
+    attack:{
       type:DataTypes.STRING,
     },
     defending:{

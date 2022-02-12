@@ -8,8 +8,8 @@ const typeRoute = require('./types')
 const router = Router();
 
 //middlewares
-router.use('/pokemons',pokemonsRoute)//http://localhost:3001/pokemon/cualquier cosa
-router.use('/types',typeRoute)//http://localhost:3001/type/cualquier cosa
+router.use('/pokemons',pokemonsRoute)//http://localhost:3001/pokemons/cualquier cosa
+router.use('/types',typeRoute)//http://localhost:3001/types/cualquier cosa
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
