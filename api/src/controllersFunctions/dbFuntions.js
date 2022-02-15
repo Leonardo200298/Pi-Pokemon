@@ -30,7 +30,7 @@ const createPokemon = async (req, res) => {
         ? res.status(400).send({error:'404 Not found'})
         : res.status(200).send({success:'Pokemon created'});
 }
-const helperCreatePokemon = async (name,id,img,life,force,defending,speed,height,weight,types) => {
+const helperCreatePokemon = async (name,id,img,life,attack,defending,speed,height,weight,types) => {
     try{
         if (name) {
             let poke = await Pokemon.create({

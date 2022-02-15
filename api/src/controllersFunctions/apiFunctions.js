@@ -33,9 +33,8 @@ async function getAllPokemons(req, res) {
     try{
     
         const [db, api] = await Promise.all([getAllPokemosDb(),getPokeApi()])
-        /* console.log(api) */
-        /* console.log(db) */
         const allPoke = [...db, ...api];
+        console.log(allPoke)
         if (req.query.name) {
             var prueba = await findByName(allPoke, req.query.name)
             return res.send(prueba);
