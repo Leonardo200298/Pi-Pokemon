@@ -1,0 +1,5 @@
+.button-home{
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+}

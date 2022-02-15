@@ -27,7 +27,7 @@ export default function Pokemons() {
         dispatch(getPokemons())
         dispatch(getByTypes())
     }, [dispatch])
-
+    console.log(poquemoncitos)
     return (
         <div className="container-home">
             <ButtonToForm/>
@@ -53,6 +53,7 @@ export default function Pokemons() {
                         <div>
                             <Cards
                                 key={pokemon.id}
+                                keyID={pokemon.id}
                                 name={pokemon.name}
                                 attack={pokemon.attack}
                                 types={pokemon.types}
@@ -63,10 +64,12 @@ export default function Pokemons() {
                 }):
                 //muestra los 12
                 pokeGap.length ? pokeGap.map((pokemon) => {
+                    console.log(pokemon)
                     return (
                         <div>
                             <Cards
                                 key={pokemon.id}
+                                keyID={pokemon.id}
                                 name={pokemon.name}
                                 attack={pokemon.attack}
                                 types={pokemon.types}

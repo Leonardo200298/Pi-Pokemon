@@ -25,11 +25,7 @@ export default function NavBar({ setCurrentPage, types}){
     return (
         <div>
             <form onSubmit={(e)=>searcher(e)}>
-                <input value={input} 
-                name="search"
-                type="text"
-                onChange={(e)=>handleInputChange(e)} 
-                />
+                <input value={input} name="search" type="text" onChange={(e)=>handleInputChange(e)}/>
                 <button className="button-class" type="submit">search</button>
                 <select className="button-class" name="type" onChange={handleSelectChange}>
                     <option value='all'>All-types</option>

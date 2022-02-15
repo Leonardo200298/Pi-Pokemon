@@ -3,9 +3,8 @@ import {
     GET_POKEMONS,
     GET_BY_TYPES,
     FILTER_BY_TYPES,
-    POKEMON_CREATED,
     ORDER_BY,
-    POST_POKEMON
+    CREATE_POKEMON
 
 } from '../action'
 
@@ -14,7 +13,7 @@ const initialState = {
     allPokemons: [],
     types: [],
     backUpPokemon: [],
-    orderBy:[]
+    orderBy: []
 
 }
 
@@ -45,44 +44,46 @@ export default function rootReducer(state = initialState, { type, payload }) {
         }
         case ORDER_BY: {
             console.log(payload)
-            let orderSort=[...state.allPokemons];
+            let orderSort = [...state.allPokemons];
             if (payload === 'ascend') {
-                orderSort.sort((a, b) =>a.name.localeCompare(b.name) )//a.name-b.name 
+                orderSort.sort((a, b) => a.name.localeCompare(b.name))//a.name-b.name 
             }
-            if (payload === 'descendant'){
-                orderSort.sort((a, b)=>b.name.localeCompare(a.name) )
+            if (payload === 'descendant') {
+                orderSort.sort((a, b) => b.name.localeCompare(a.name))
             }
-            if (payload === 'attack-up'){
-                orderSort.sort((a,b)=>{
-                    if (a.attack > b.attack){
+            if (payload === 'attack-up') {
+                orderSort.sort((a, b) => {
+                    if (a.attack > b.attack) {
                         return -1
                     }
-                    if (a.attack < b.attack){
+                    if (a.attack < b.attack) {
                         return 1
                     }
                     return 0
                 })
             }
-            if (payload === 'attack-down'){
-                orderSort.sort((a, b)=>{
-                  if (a.attack > b.attack) {
-                      return 1
-                  } 
-                  if (a.attack < b.attack){
-                      return -1
-                  }
-                  return 0
+            if (payload === 'attack-down') {
+                orderSort.sort((a, b) => {
+                    if (a.attack > b.attack) {
+                        return 1
+                    }
+                    if (a.attack < b.attack) {
+                        return -1
+                    }
+                    return 0
                 })
             }
-           
+
             return {
                 ...state,
-                allPokemons:orderSort
+                allPokemons: orderSort
             }
         }
-        case POST_POKEMON :{
+        case CREATE_POKEMON: {
             return {
-                ...state
+                ...state,
+                backUpPokemon: payload,
+                allPokemons: payload,
             }
         }
         default: return state
