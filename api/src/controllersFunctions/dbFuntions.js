@@ -4,13 +4,9 @@ const { Pokemon, Type} = require('../db')
 
 async function getTypes(req,res){
     const allTypes =await Type.findAll()
-    console.log(allTypes)
     res.send(allTypes);
 }
-/* async function unaFuncion(req,res){
-    const tata =await getTypes()
-    return res.send(tata)
-} */
+
 async function dbTypes(){
     const {data} =await axios.get('https://pokeapi.co/api/v2/type')
     data.results.map((n)=>{
@@ -44,7 +40,6 @@ const helperCreatePokemon = async (name,id,img,life,attack,defending,speed,heigh
                 height,
                 weight,
             });
-            console.log(poke)
             await poke.addType(types);
         }else {
             return 'error';
@@ -54,7 +49,41 @@ const helperCreatePokemon = async (name,id,img,life,attack,defending,speed,heigh
             console.log('Error in createPokemon')
         }     
 };
-
+const getPokemonDbByID = async (id) => {
+    let info = await Pokemon.findAll({
+        attributes: [
+            'name',
+            'id',
+            'img',
+            'life',
+            'attack',
+            'defending',
+            'speed',
+            'weight',
+            'height',
+        ],
+        include: {
+            model: Type,
+        },
+    });
+    info = info.find((poke) => poke.id === id);
+    try {
+        return (poke = {
+            name: info.name,
+            id: info.id,
+            img: info.img,
+            life: info.life,
+            attack: info.attack,
+            defending: info.defending,
+            speed: info.speed,
+            types: info.types.map((t) => t.name),
+            weight: info.weight,
+            height: info.height,
+        });
+    } catch {
+        return null;
+    }
+};
 /* para probar el post
 {
     "name":"name", 
@@ -70,5 +99,6 @@ http://localhost:3001/pokemons/
 module.exports = {
     createPokemon,
     getTypes,
-    dbTypes
+    dbTypes,
+    getPokemonDbByID
 }
