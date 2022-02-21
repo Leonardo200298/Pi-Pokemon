@@ -1,10 +1,18 @@
+import { Link } from "react-router-dom";
+
+
 import './cards.css'
 
-export default function Cards({ name, types, img, attack, keyID }) {
+
+export default function Cards({ name, types, img, attack, keyID }) { 
     return (
         <div className="container-cards">
+
             <div>
-                <h1>{name}</h1>
+                {console.log(name)}
+                <Link to={`/pokemons/detail/${keyID}`}>
+                    <h1>{name}</h1>
+                </Link>
                 <h3>Attack:{attack}</h3>
             </div>
             <img src={img} alt={name}></img>
@@ -21,6 +29,3 @@ export default function Cards({ name, types, img, attack, keyID }) {
         </div>
     )
 }
-{/*  {types&&types.map((elemento)=>(
-                         <span>{elemento.name}</span>
-                     ))} */}

@@ -3,6 +3,7 @@ import Pokemons from '../../components/pokemons/pokemons';
 import LandingPage from '../landingPage/landingPage';
 import CreatePokemon from '../createPokemon/createPokemon';
 import Home from '../Home/Home';
+import Details from '../Card/detail';
 
 export default function RoutesRoute() {
     return (
@@ -12,6 +13,7 @@ export default function RoutesRoute() {
                 <Route exact path='/pokemons' element={<Pokemons/>} />
                 <Route path='/pokemons/createForm' element={<CreatePokemon/>}/>
                 <Route path='/pokemons' element={<Home/>}/>
+                <Route exact path='/pokemons/detail/:id' element={<Details/>}/>
             </Routes>
             
         </div>

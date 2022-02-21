@@ -1,8 +1,8 @@
-.content::placeholder{
+.content{
     display: flexbox;
     justify-content: space-evenly;
     height: 40px;
-   
+ 
 
 }
 .style-button{

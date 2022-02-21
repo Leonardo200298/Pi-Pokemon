@@ -4,7 +4,8 @@ import {
     GET_BY_TYPES,
     FILTER_BY_TYPES,
     ORDER_BY,
-    CREATE_POKEMON
+    CREATE_POKEMON,
+    GET_DETAIL_BY_ID
 
 } from '../action'
 
@@ -13,7 +14,8 @@ const initialState = {
     allPokemons: [],
     types: [],
     backUpPokemon: [],
-    orderBy: []
+    orderBy: [],
+    detail:[]
 
 }
 
@@ -26,7 +28,8 @@ export default function rootReducer(state = initialState, { type, payload }) {
         }
         case GET_BY_NAME: return {
             ...state,
-            pokemon: payload
+            pokemon: payload,
+           
         }
         case GET_BY_TYPES: return {
             ...state,
@@ -84,6 +87,12 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 backUpPokemon: payload,
                 allPokemons: payload,
+            }
+        }
+        case GET_DETAIL_BY_ID:{
+            return{
+                ...state,
+                detail:payload
             }
         }
         default: return state
