@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function CreatePokemon() {
     const types = useSelector((state) => state.types)
     const dispatch = useDispatch();
-    const [error, setError] = useState(false)
+    const [error, setError] = useState({})
 
 
     const [input, setInput] = useState({
@@ -35,21 +35,37 @@ export default function CreatePokemon() {
             ...input,
             types: [...input.types, tipo.id]
         })
-        console.log(input.types)
+        
 
     }
     function handleInputChange(e) {
         e.preventDefault();
-        console.log(e.target.name)
         setInput({
             ...input,
             [e.target.name]: e.target.value
 
         })
     }
+    function handleInputNumber(e){
+        e.preventDefault();
+        if ((e.target.value > 0) && (Number(e.target.value))){
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value
+                
+            })
+                    
+        }else{
+            setError({
+                ...input,
+                [e.target.name]: e.target.value
+                
+            })
+        }
+    }
     function handleForm(e) {
         e.preventDefault()
-        console.log(input)
+ 
         dispatch(postPokemon(input))
         setInput({});
 
@@ -59,19 +75,19 @@ export default function CreatePokemon() {
             <Home />
             <h1>Create your Pokemon!!</h1>
             <form onSubmit={(e) => handleForm(e)} className="content-form" action="">
-                <input onChange={(e) => handleInputChange(e)} name="name" placeholder='Nombre' type="text" />
-                <input  onChange={(e) =>handleInputChange(e)} name="life" placeholder='life' type="text" />
+                <input onChange={(e) => handleInputChange(e)} name="name" placeholder='Name' type="text" />
+                <input  onChange={(e) =>handleInputNumber(e)} name="life" placeholder='Life' type="text" />
+                {error?<p>invalid type</p>:null}
+                <input onChange={(e) =>handleInputNumber(e)} name="attack" placeholder='Attack' type="text" />
+                {error?<p>invalid type</p>:null}
+                <input onChange={(e) => handleInputChange(e)} name="img" placeholder='Img' type="text" />
+                <input onChange={(e) =>handleInputChange(e)} name="defending" placeholder='Defending' type="text" />
                 
-                <input onChange={(e) =>handleInputChange(e)} name="attack" placeholder='attack' type="text" />
+                <input onChange={(e) =>handleInputChange(e)} name="speed" placeholder='Speed' type="text" />
                 
-                <input onChange={(e) => handleInputChange(e)} name="img" placeholder='img' type="text" />
-                <input onChange={(e) =>handleInputChange(e)} name="defending" placeholder='defending' type="text" />
+                <input onChange={(e) =>handleInputChange(e)} name="height" placeholder='Height' type="text" />
                 
-                <input onChange={(e) =>handleInputChange(e)} name="speed" placeholder='speed' type="text" />
-                
-                <input onChange={(e) =>handleInputChange(e)} name="height" placeholder='height' type="text" />
-                
-                <input onChange={(e) =>handleInputChange(e)} name="weight" placeholder='weight' type="text" />
+                <input onChange={(e) =>handleInputChange(e)} name="weight" placeholder='Weight' type="text" />
                 
 
                 <div className='div-prueba'>
